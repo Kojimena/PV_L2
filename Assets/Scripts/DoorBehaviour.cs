@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro; 
+using StarterAssets;
 
 public class DoorBehaviour : MonoBehaviour
 {
@@ -10,25 +11,20 @@ public class DoorBehaviour : MonoBehaviour
     [SerializeField] private GameObject customCursor;
     [Header("UI Elements")]
     [SerializeField] private TextMeshProUGUI messageText;
-    [SerializeField] private GameObject fadePanel;
-    [SerializeField] private TextMeshProUGUI finalMessageText;
 
     private bool hasEscaped = false;
 
     private void Start()
     {
+        PlayerInventory.hasKey = false;
         messageText.text = "";
-        fadePanel.SetActive(false);
     }
     
     private void Update()
     {
-        if (hasEscaped && Input.GetKeyDown(KeyCode.R))
-        {
-            PlayerInventory.hasKey = false;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
+        
     }
+    
 
     private void OnTriggerEnter(Collider other)
     {
@@ -42,9 +38,18 @@ public class DoorBehaviour : MonoBehaviour
             }
 
             hasEscaped = true;
-            fadePanel.SetActive(true);
-            customCursor.SetActive(false);
-            finalMessageText.text = "Has logrado escapar... esta vez.\n\nPresiona R para reiniciar el nivel.";
+            if (customCursor != null)
+                customCursor.SetActive(false);
+
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible   = true;
+
+            var fps = FindAnyObjectByType<FirstPersonController>();
+            if (fps != null)
+                fps.enabled = false;
+            
+            SceneManager.LoadScene("WinMenu");
+
         }
         else if (other.CompareTag("Player"))
         {
@@ -55,10 +60,11 @@ public class DoorBehaviour : MonoBehaviour
     private void ShowMessage(string text)
     {
         messageText.text = text;
+        messageText.gameObject.SetActive(true);
         CancelInvoke(nameof(ClearMessage));
         Invoke(nameof(ClearMessage), 2f); 
     }
-
+    
     private void ClearMessage()
     {
         messageText.text = "";
