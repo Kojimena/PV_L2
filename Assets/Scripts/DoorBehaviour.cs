@@ -25,6 +25,7 @@ public class DoorBehaviour : MonoBehaviour
     {
         if (hasEscaped && Input.GetKeyDown(KeyCode.R))
         {
+            PlayerInventory.hasKey = false;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
