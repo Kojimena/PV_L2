@@ -65,7 +65,7 @@ public class DoorBehaviour : MonoBehaviour
             {
                 AudioManager.instace.PlayAudioClip(lockedSound);
             }
-            ShowMessage("Necesitas una llave para abrir esta puerta.");
+            ShowMessage("You need a key to open this door.");
         }
     }
 

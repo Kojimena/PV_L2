@@ -38,7 +38,7 @@ public class CursorBehaviour : MonoBehaviour
                 AudioManager.instace.PlayAudioClip(keySound);
                 PlayerInventory.hasKey = true;
                 Destroy(hit.collider.gameObject);
-                Debug.Log("Llave recogida");
+                Debug.Log("Key collected!");
             } else if (hit.collider.CompareTag("Box"))
             {
                 AudioManager.instace.PlayAudioClip(boxSound);

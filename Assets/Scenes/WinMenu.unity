@@ -1271,7 +1271,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: b07d44fca9ad9456f8253e8d4ac92298, type: 3}
-    m_FontSize: 84
+    m_FontSize: 72
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -1282,7 +1282,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Has logrado escapar... esta vez
+  m_Text: "You\u2019ve managed to escape\u2026 this time."
 --- !u!222 &2020117400
 CanvasRenderer:
   m_ObjectHideFlags: 0
