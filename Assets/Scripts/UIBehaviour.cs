@@ -6,6 +6,7 @@ public class PauseMenuManager : MonoBehaviour
     public GameObject pausePanel;
     public MonoBehaviour fpsController;
     [SerializeField] private AudioClip pauseSound;
+    [SerializeField] private AudioClip buttonSound;
 
     private void Start()
     {
@@ -16,6 +17,13 @@ public class PauseMenuManager : MonoBehaviour
         if (fpsController != null)
             fpsController.enabled = true;
     }
+    
+    public void PlayClickSound()
+    {
+        if (buttonSound != null)
+            AudioManager.instace.PlayAudioClip(buttonSound);
+    }
+
 
     private void Update()
     {

@@ -11,6 +11,10 @@ public class DoorBehaviour : MonoBehaviour
     [SerializeField] private GameObject customCursor;
     [Header("UI Elements")]
     [SerializeField] private TextMeshProUGUI messageText;
+    [Header("Audio")]
+    [SerializeField] private AudioClip unlockSound;
+    [SerializeField] private AudioClip lockedSound;
+
 
     private bool hasEscaped = false;
 
@@ -48,11 +52,19 @@ public class DoorBehaviour : MonoBehaviour
             if (fps != null)
                 fps.enabled = false;
             
+            if (unlockSound != null){
+                AudioManager.instace.PlayAudioClip(unlockSound);
+            }
+            
             SceneManager.LoadScene("WinMenu");
 
         }
         else if (other.CompareTag("Player"))
         {
+            if (lockedSound != null)
+            {
+                AudioManager.instace.PlayAudioClip(lockedSound);
+            }
             ShowMessage("Necesitas una llave para abrir esta puerta.");
         }
     }

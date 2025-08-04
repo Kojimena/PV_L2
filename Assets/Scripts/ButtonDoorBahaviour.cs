@@ -36,4 +36,6 @@ public class ButtonDoorBahaviour : MonoBehaviour
             wallToDeactivate.SetActive(true); 
         }
     }
+    
+
 }

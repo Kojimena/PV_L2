@@ -3,9 +3,17 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
+    [SerializeField] private AudioClip buttonSound;
+
     public void OnStartGame(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
+    }
+    
+    public void PlayClickSound()
+    {
+        if (buttonSound != null)
+            AudioManager.instace.PlayAudioClip(buttonSound);
     }
 
     // Llama a este método desde el botón "Quit" (OnClick)
