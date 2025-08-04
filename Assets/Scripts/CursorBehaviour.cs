@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class CursorBehaviour : MonoBehaviour
 {
+    [SerializeField] private AudioClip switchSound;
+    [SerializeField] private AudioClip keySound;
+    [SerializeField] private AudioClip boxSound;
     void Start()
     {
 
@@ -23,6 +26,7 @@ public class CursorBehaviour : MonoBehaviour
         {
             if (hit.collider.CompareTag("Switch"))
             {
+                AudioManager.instace.PlayAudioClip(switchSound);
                 GameObject[] traps = GameObject.FindGameObjectsWithTag("Trap");
                 foreach (GameObject trap in traps)
                 {
@@ -31,11 +35,13 @@ public class CursorBehaviour : MonoBehaviour
             }
             else if (hit.collider.CompareTag("Key"))
             {
+                AudioManager.instace.PlayAudioClip(keySound);
                 PlayerInventory.hasKey = true;
                 Destroy(hit.collider.gameObject);
                 Debug.Log("Llave recogida");
             } else if (hit.collider.CompareTag("Box"))
             {
+                AudioManager.instace.PlayAudioClip(boxSound);
                 hit.collider.attachedRigidbody.AddForce(-hit.normal * 5f, ForceMode.Impulse);
                 
             }

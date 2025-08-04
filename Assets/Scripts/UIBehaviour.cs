@@ -4,29 +4,33 @@ using UnityEngine.SceneManagement;
 public class PauseMenuManager : MonoBehaviour
 {
     public GameObject pausePanel;
-
     public MonoBehaviour fpsController;
+    [SerializeField] private AudioClip pauseSound;
 
     private void Start()
     {
-        pausePanel.SetActive(false);
+        Time.timeScale = 1f; 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        
+        if (fpsController != null)
+            fpsController.enabled = true;
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            // Play the pause sound
+            AudioManager.instace.PlayAudioClip(pauseSound);
             TogglePause();
+        }
     }
 
     public void TogglePause()
     {
         bool isPaused = pausePanel.activeSelf;
         
-        //imprime el estado del juego
-        Debug.Log("Estado del juego: " + (isPaused ? "Pausado" : "Reanudado"));
-
         // 1) Mostrar/ocultar UI
         pausePanel.SetActive(!isPaused);
 

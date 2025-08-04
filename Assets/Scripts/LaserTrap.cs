@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 public class LaserTrap : MonoBehaviour
 {
     private Vector3 startPos; 
+    [SerializeField] private AudioClip laserSound;
+
     private void OnTriggerEnter(Collider other)
     {
 
@@ -12,6 +14,7 @@ public class LaserTrap : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         } else if (other.CompareTag("Box"))
         {
+            AudioManager.instace.PlayAudioClip(laserSound);
             Destroy(other.gameObject);
         }
         
@@ -20,6 +23,7 @@ public class LaserTrap : MonoBehaviour
     void Start()
     {
         startPos = transform.position;
+
     }
     
     void Update()

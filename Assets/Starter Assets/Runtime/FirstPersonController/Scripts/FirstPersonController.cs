@@ -50,6 +50,9 @@ namespace StarterAssets
 		public float TopClamp = 90.0f;
 		[Tooltip("How far in degrees can you move the camera down")]
 		public float BottomClamp = -90.0f;
+		[SerializeField] private AudioClip boxPushSound;
+		private AudioSource source;
+
 
 		// cinemachine
 		private float _cinemachineTargetPitch;
@@ -92,6 +95,22 @@ namespace StarterAssets
 			if (_mainCamera == null)
 			{
 				_mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+			}
+			
+			source = GetComponent<AudioSource>();
+			source.playOnAwake = false;
+
+		}
+		
+		private void OnControllerColliderHit(ControllerColliderHit hit)
+		{
+			if (hit.collider.CompareTag("Box") )
+			{
+				if (boxPushSound != null)
+				{
+					source.PlayOneShot(boxPushSound);
+
+				}
 			}
 		}
 

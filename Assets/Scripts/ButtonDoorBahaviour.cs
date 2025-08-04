@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class ButtonDoorBahaviour : MonoBehaviour
 {
-    [SerializeField] private GameObject wallToDeactivate; 
+    [SerializeField] private GameObject wallToDeactivate;
+    [SerializeField] private AudioClip buttonSound;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,7 +21,8 @@ public class ButtonDoorBahaviour : MonoBehaviour
     {
         if (other.CompareTag("Box") || other.CompareTag("Player"))
         {
-            
+            // Play the button sound
+            AudioManager.instace.PlayAudioClip(buttonSound);
             // Move the button down by pressDepth
             wallToDeactivate.SetActive(false);
         }

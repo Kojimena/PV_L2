@@ -121,3 +121,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30c52c673ddcb436cbf67550f80d8f1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  laserSound: {fileID: 8300000, guid: 201e4bbb7f1904ecf8b8ce8a3d420dd6, type: 3}
