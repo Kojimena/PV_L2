@@ -1,5 +1,32 @@
 # Escape Room in Unity
 
+
+### Menus
+
+1. **Start Menu**  
+   - Play  
+   - Quit
+
+2. **Pause Menu**  
+   - Resume  
+   - Main Menu  
+   - Restart
+
+3. **Victory Menu**  
+   - Play Again  
+   - Quit
+
+### Audio
+
+- **Background Music**  
+- **Box Movement**  
+- **Key Pickup**  
+- **Pause Activation**  
+- **Menu Button Clicks**  
+- **Laser Destruction**  
+- **Laser Switch Toggle**  
+- **Pressure Button Activation**
+
 ### Puzzle flow
 
 1. **Pick Up the Key**  
